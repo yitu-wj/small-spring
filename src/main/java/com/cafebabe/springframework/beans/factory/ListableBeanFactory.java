@@ -4,7 +4,7 @@ import com.cafebabe.springframework.beans.BeansException;
 
 import java.util.Map;
 
-public interface ListableBeanFactory {
+public interface ListableBeanFactory extends BeanFactory{
     /**
      * 按照类型返回 Bean 实例
      * @param type
