@@ -1,6 +1,7 @@
 package com.cafebabe.springframework.context.annotation;
 
 import cn.hutool.core.util.StrUtil;
+import com.cafebabe.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor;
 import com.cafebabe.springframework.beans.factory.config.BeanDefinition;
 import com.cafebabe.springframework.beans.factory.support.BeanDefinitionRegistry;
 import com.cafebabe.springframework.stereotype.Component;
@@ -26,6 +27,8 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
                 registry.registerBeanDefinition(determineBeanName(beanDefinition), beanDefinition);
             }
         }
+        // 注册处理注解的 BeanPostProcessor（@Autowired、@Value）
+        registry.registerBeanDefinition("com.cafebabe.springframework.context.annotation.internalAutowiredAnnotationProcessor", new BeanDefinition(AutowiredAnnotationBeanPostProcessor.class));
     }
 
     private String resolveBeanScope(BeanDefinition beanDefinition) {
