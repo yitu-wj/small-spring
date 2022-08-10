@@ -5,6 +5,7 @@ import com.cafebabe.springframework.beans.factory.FactoryBean;
 import com.cafebabe.springframework.beans.factory.config.BeanDefinition;
 import com.cafebabe.springframework.beans.factory.config.BeanPostProcessor;
 import com.cafebabe.springframework.beans.factory.config.ConfigurableBeanFactory;
+import com.cafebabe.springframework.core.conver.ConversionService;
 import com.cafebabe.springframework.util.ClassUtils;
 import com.cafebabe.springframework.util.StringValueResolver;
 
@@ -27,6 +28,9 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
      * String resolvers to apply e.g. to annotation attribute values
      */
     private final List<StringValueResolver> embeddedValueResolvers = new ArrayList<>();
+
+    private ConversionService conversionService;
+
     @Override
     public Object getBean(String name) throws BeansException {
         return doGetBean(name, null);
@@ -40,6 +44,11 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
     @Override
     public <T> T getBean(String name, Class<T> requiredType) throws BeansException {
         return (T) getBean(name);
+    }
+
+    @Override
+    public boolean containsBean(String name) {
+        return containsBeanDefinition(name);
     }
 
     protected <T> T doGetBean(final String name, final Object[] args) {
@@ -88,6 +97,18 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
         }
         return result;
     }
+
+    @Override
+    public ConversionService getConversionService() {
+        return conversionService;
+    }
+
+    @Override
+    public void setConversionService(ConversionService conversionService) {
+        this.conversionService = conversionService;
+    }
+
+    protected abstract boolean containsBeanDefinition(String beanName);
 
     /**
      * Return the list of BeanPostProcessors that will get applied
