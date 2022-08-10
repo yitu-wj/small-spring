@@ -3,6 +3,12 @@ package com.cafebabe.springframework.aop;
 
 import org.aopalliance.intercept.MethodInterceptor;
 
+/**
+ * Base class for AOP proxy configuration managers.
+ * These are not themselves AOP proxies, but subclasses of this class are
+ * normally factories from which AOP proxy instances are obtained directly.
+ * <p>
+ */
 public class AdvisedSupport {
     // ProxyConfig
     private boolean proxyTargetClass = false;

@@ -2,6 +2,11 @@ package com.cafebabe.springframework.aop.framework;
 
 import com.cafebabe.springframework.aop.AdvisedSupport;
 
+/**
+ * Factory for AOP proxies for programmatic use, rather than via a bean
+ * factory. This class provides a simple way of obtaining and configuring
+ * AOP proxies in code.
+ */
 public class ProxyFactory {
     private AdvisedSupport advisedSupport;
 

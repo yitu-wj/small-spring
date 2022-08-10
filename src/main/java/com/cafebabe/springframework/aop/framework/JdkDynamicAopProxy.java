@@ -8,6 +8,13 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
+/**
+ * JDK-based {@link AopProxy} implementation for the Spring AOP framework,
+ * based on JDK {@link java.lang.reflect.Proxy dynamic proxies}.
+ * <p>
+ * JDK 动态代理
+ * <p>
+ */
 public class JdkDynamicAopProxy implements AopProxy, InvocationHandler {
     private final AdvisedSupport advised;
 

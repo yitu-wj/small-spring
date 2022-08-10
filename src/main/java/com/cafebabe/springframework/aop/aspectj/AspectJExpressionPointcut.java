@@ -11,6 +11,13 @@ import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Spring {@link cn.bugstack.springframework.aop.Pointcut} implementation
+ * that uses the AspectJ weaver to evaluate a pointcut expression.
+ * <p>
+ * 切点表达式
+ * <p>
+ */
 public class AspectJExpressionPointcut implements Pointcut, ClassFilter, MethodMatcher {
     private static final Set<PointcutPrimitive> SUPPORTED_PRIMITIVES = new HashSet<>();
 

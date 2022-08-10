@@ -5,6 +5,12 @@ import org.aopalliance.intercept.MethodInvocation;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Method;
 
+/**
+ * <p>Invokes the target object using reflection. Subclasses can override the
+ * #invokeJoinpoint() method to change this behavior, so this is also
+ * a useful base class for more specialized MethodInvocation implementations.
+ * <p>
+ */
 public class ReflectiveMethodInvocation implements MethodInvocation {
     // 目标对象
     protected final Object target;

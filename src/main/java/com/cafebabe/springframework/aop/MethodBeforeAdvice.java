@@ -2,6 +2,11 @@ package com.cafebabe.springframework.aop;
 
 import java.lang.reflect.Method;
 
+/**
+ * Advice invoked before a method is invoked. Such advices cannot
+ * prevent the method call proceeding, unless they throw a Throwable.
+ * <p>
+ */
 public interface MethodBeforeAdvice extends BeforeAdvice{
     /**
      * Callback before a given method is invoked.
